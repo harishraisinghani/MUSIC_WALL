@@ -1,0 +1,17 @@
+<h2><%= @track.title %> <small>(by: <%= @track.author %>)</small></h2>
+<strong>
+<% if current_user %>
+  <%= @track.upvotes(:id).count %><%= erb :upvotes, locals: {:track => @track} %>
+<% end %>
+</strong>
+
+<p></p>
+  <a href='<%= @track.url %>'><%= @track.url %></a>
+<p>
+</p>
+<% if !@track.user.nil? %>
+    <small>Posted by: <%= @track.user.email %></small>
+<% end %>
+
+<hr/>
+<a href="/tracks"> Back to the Music Wall </a>
