@@ -1,0 +1,32 @@
+<% if @track.errors.any? %>
+  <div>
+    <strong> Error adding your song. Please try again. </strong>
+    <ul>
+      <% @track.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<form method="post" action="/tracks" class="form-horizontal">
+  <div class="form-group">
+    <label> Author </label>
+    <input type="text" name="author" value= "<% @track.author %>" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label> Title </label>
+    <input type="text" name="title" value="<% @track.title %>" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label> URL (optional)</label>
+    <input type="url_field" name="url" value="<% @track.url %>" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <input type="submit" value="Submit"  class="btn btn-primary">
+  </div>
+</form>

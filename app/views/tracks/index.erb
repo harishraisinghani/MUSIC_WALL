@@ -1,0 +1,35 @@
+   
+<div class = "login" align="right">
+  <% if current_user %>
+    <%= current_user.email %>
+    <a href="./logout">Logout</a>
+  <% else %>
+    <a href='register'>
+    <button type= "submit" class="btn btn-success" >Register</button></a>
+    <p></p>
+    <small>Have an account? <a href='login'>Log In</a></small>
+  <% end %>
+</div>
+
+
+<a href="/tracks/new"> <h2>Click here to post your favourite music </h2> </a>
+
+
+<% @tracks.each do |track| %>
+  <div class= 'track'>
+    <h2><%= track.title %> <small>(by: <%= track.author %>)</small></h2>
+    <strong>
+    <% if current_user %>
+      <%= track.upvotes(:id).count %><%= erb :upvotes, locals: {:track => track} %>
+    <% end %>
+    </strong>
+
+    <p>
+      <a href='<%= track.url %>'><%= track.url %></a>
+    <p>
+    </p>
+    <% if !track.user.nil? %>
+        <small>Posted by: <%= track.user.email %></small>
+      <% end %>
+  </div>
+<% end %>
