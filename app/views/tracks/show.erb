@@ -26,7 +26,7 @@
 <% if !@reviews.empty? %>
   <% @reviews.each do |review|%>
     <div class= 'review'>
-      <%= review.content %></a> 
+      Rating: <%= review.rating %><br> <%= review.content %> 
 
       <% if !review.user.nil? %>
           <small>Review by: <%= review.user.email %></small>
