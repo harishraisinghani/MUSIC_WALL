@@ -15,3 +15,25 @@
 
 <hr/>
 <a href="/tracks"> Back to the Music Wall </a>
+<p></p>
+<% if current_user && current_user.reviews.where(track_id: @track.id).empty? %>
+  <%= erb :reviews, locals: {:track => @track} %>
+<% elsif !current_user %>
+  <strong>You must Register or Log In to review this track</strong>
+<% end %>
+
+<% @reviews = @track.reviews %>
+<% if !@reviews.empty? %>
+  <% @reviews.each do |review|%>
+    <div class= 'review'>
+      <%= review.content %></a> 
+
+      <% if !review.user.nil? %>
+          <small>Review by: <%= review.user.email %></small>
+        <% end %>
+      <% if review.user_id == current_user.id %>
+        <%= erb :delete, locals: {:review => review} %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

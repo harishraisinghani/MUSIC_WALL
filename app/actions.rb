@@ -87,7 +87,26 @@ post '/upvotes' do
     user_id: current_user.id,
     track_id: track_id
     )
-
   vote.save
   redirect '/tracks'
+end
+
+post '/reviews' do
+  track_id = params[:track_id]
+  review = Review.new(
+    user_id: current_user.id,
+    track_id: track_id,
+    content: params[:content]
+    )
+  review.save
+  redirect(back)
+end
+
+delete '/review/:id' do
+  @review = Review.find(params[:id])
+  @review.destroy
+  redirect(back)
+  # review = Review.find(params[:id])
+  # puts review
+  # destroy review
 end

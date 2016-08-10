@@ -17,7 +17,7 @@
 
 <% @tracks.each do |track| %>
   <div class= 'track'>
-    <h2><a href="/tracks/<%= track.id %>"><%= track.title %></a><small>(by: <%= track.author %>)</small></h2>
+    <h2><a href="/tracks/<%= track.id %>"><%= track.title %></a><small> (by: <%= track.author %>)</small></h2>
     <strong>
     <% if current_user %>
       <%= track.upvotes(:id).count %><%= erb :upvotes, locals: {:track => track} %>
