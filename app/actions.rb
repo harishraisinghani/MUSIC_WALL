@@ -96,7 +96,8 @@ post '/reviews' do
   review = Review.new(
     user_id: current_user.id,
     track_id: track_id,
-    content: params[:content]
+    content: params[:content],
+    rating: params[:rating]
     )
   review.save
   redirect(back)

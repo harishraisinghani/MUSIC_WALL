@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810000133) do
+ActiveRecord::Schema.define(version: 20160810020058) do
 
   create_table "messages", force: :cascade do |t|
   end
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160810000133) do
     t.integer "user_id"
     t.integer "track_id"
     t.string  "content"
+    t.integer "rating"
   end
 
   create_table "tracks", force: :cascade do |t|
