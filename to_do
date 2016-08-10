@@ -1,0 +1,5 @@
+Additiona Enhancements TODO:
+- Add password encryption using BCrypt
+- Add flash messages when a user first logs in or registers
+- Add CSS to clean up layout
+- Add a menu that exists on every page to go to any of the Views
